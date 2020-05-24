@@ -15,6 +15,13 @@
         Hello! It's main page. You are not logged in!
     </security:authorize>
 </p>
+
+br>
+
+Click <a href="<c:url value="/login" /> ">login</a>
+to authentication for necessary authorities.
+
+
 <a href="<c:url value="/logout"/>">
     <button type="button" class="btn btn-primary">LogOut</button>
 </a>

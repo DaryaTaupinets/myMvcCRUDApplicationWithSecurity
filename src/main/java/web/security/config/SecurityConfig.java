@@ -28,10 +28,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new LoginSuccessHandler();
     }
 
-    @Bean
-    public FailureAuthenticationHandler failureAuthenticationHandler() {
-        return new FailureAuthenticationHandler();
-    }
+    //@Bean
+    //public FailureAuthenticationHandler failureAuthenticationHandler() {
+    //    return new FailureAuthenticationHandler();
+    //}
 
     @Bean
     public LogoutSuccessHandlerImpl logoutSuccessHandler() {
@@ -52,7 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/admin/**").hasRole("admin")
-                .antMatchers("/main/**").hasAnyRole("user", "admin")
+                .antMatchers("/user/**").hasAnyRole("user", "admin")
                 .and()
                 .authorizeRequests().antMatchers("/login**").permitAll()
                 .and()
@@ -61,8 +61,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/loginAction")
                 .successHandler(loginSuccessHandler())
                 .permitAll()
-                .failureHandler(failureAuthenticationHandler())
-                .permitAll()
+                //.failureHandler(failureAuthenticationHandler())
+                //.permitAll()
                 .and()
                 .logout().logoutSuccessHandler(logoutSuccessHandler()).permitAll()
                 .and()

@@ -30,5 +30,12 @@
 Click <a href="<c:url value="/login" /> ">login</a>
 to authentication for necessary authorities.
 
+<br>
+<p>
+<h2><a href="<c:url value="/user"/>">
+    <button type="button" class="btn btn-primary">Return to allowed page</button>
+</a></h2>
+</p>
+
 </body>
 </html>

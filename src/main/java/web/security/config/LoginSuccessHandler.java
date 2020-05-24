@@ -46,7 +46,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         if (authorities.contains(roleAdmin)) {
             return "/admin";
         } else if (authorities.contains(roleUser)) {
-            return "/main";
+            return "/user";
         } else {
             throw new IllegalStateException();
         }

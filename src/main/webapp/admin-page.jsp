@@ -18,20 +18,19 @@
          style="background-color: dodgerblue">
         <div>
             <h1>My first CRUD Application</h1>
+            <p>
+            <h2>
+                <security:authorize access="isAuthenticated()">
+                    User name - <security:authentication property="principal.username"/>
+                </security:authorize>
+            </h2>
+            </p>
             <h2><a href="/admin">
                 <button type="button" class="btn btn-secondary">User's list</button>
             </a></h2>
         </div>
     </nav>
 </header>
-
-<p>
-    <security:authorize access="isAuthenticated()">
-        Hello, <security:authentication property="principal.username"/>
-    </security:authorize>
-</p>
-
-<br>
 
 <div class="row">
 
@@ -80,7 +79,7 @@
                     <td><c:out value="${user.password}"/></td>
                     <td>
                         <c:forEach items="${user.roles}" var="item">
-                            ${item.name}"/><br>
+                            ${item.roleName}<br>
                         </c:forEach>
                     </td>
 

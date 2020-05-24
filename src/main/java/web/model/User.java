@@ -116,6 +116,10 @@ public class User implements UserDetails {
         this.location = location;
     }
 
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
     @Override
     public String getPassword() {
         return password;

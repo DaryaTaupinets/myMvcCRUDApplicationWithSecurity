@@ -24,20 +24,24 @@
 </header>
 
 <div>
-    <c:if test="${not empty sessionScope.msg}">
-        <span style="color: red"><c:out value="${sessionScope.msg}"/></span>
-        <c:remove var="msg" scope="session"/>
-    </c:if>
+    <h2>
+        <c:if test="${not empty sessionScope.msg}">
+            <span style="color: red"><c:out value="${sessionScope.msg}"/></span>
+            <c:remove var="msg" scope="session"/>
+        </c:if>
+    </h2>
 </div>
 
 <br>
 <h2>Hello! Please, enter your login and password</h2>
 
-<div class="row" style="margin-top:20px">
-    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-        <form class="auth-form" action='<spring:url value="/loginAction"/>' method="POST">
+
+<form class="auth-form" action='<spring:url value="/loginAction"/>' method="POST">
+
+    <div class="d-inline-flex p-2 bd-highlight">
+        <div class="container-fluid mt3">
+
             <fieldset>
-                <hr class="colorgraph">
                 <div class="form-group">
                     <input type="text" name="username" id="username" class="form-control input-lg"
                            placeholder="Login">
@@ -46,15 +50,14 @@
                     <input type="password" name="password" id="password" class="form-control input-lg"
                            placeholder="Password">
                 </div>
-                <hr class="colorgraph">
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
                         <input type="submit" class="btn btn-lg btn-primary btn-block" value="Login">
                     </div>
                 </div>
             </fieldset>
-        </form>
+        </div>
     </div>
-</div>
+</form>
 </body>
 </html>

@@ -24,7 +24,7 @@ public class UserController {
 
     @GetMapping("/")
     public String view() {
-        return "/index";
+        return "main";
     }
 
     @GetMapping("/admin")
@@ -82,9 +82,9 @@ public class UserController {
         return "/login";
     }
 
-    @GetMapping("/main")
+    @GetMapping("/user")
     public String showMainPage(Model model) {
-        return "/main";
+        return "user-page";
     }
 
     @ModelAttribute("user")
@@ -95,6 +95,6 @@ public class UserController {
 
     @GetMapping("/accessDenied")
     public String accessDeniedPage(Model model) {
-        return "/accessDenied";
+        return "noAdminRights";
     }
 }
