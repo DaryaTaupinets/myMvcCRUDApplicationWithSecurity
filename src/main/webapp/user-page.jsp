@@ -40,13 +40,18 @@
 </p>
 
 <br>
-<div>
-    <a href="/admin" class="btn btn-primary">Admin Page</a>
-</div>
 
-<br>
-<div>
-    <a href="/logout" class="btn btn-primary">Logout</a>
-</div>
+<a href="/admin">
+    <button type="button" class="btn btn-primary">Admin Page</button>
+</a>
+
+<a href="/">
+    <button type="button" class="btn btn-primary">Main Page</button>
+</a>
+
+<a href="/logout">
+    <button type="button" class="btn btn-primary">LogOut</button>
+</a>
+
 </body>
 </html>

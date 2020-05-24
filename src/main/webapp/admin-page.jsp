@@ -104,8 +104,11 @@
         <a href="/logout">
             <button type="button" class="btn btn-primary">LogOut</button>
         </a>
-    </div>
 
+        <a href="/">
+            <button type="button" class="btn btn-primary">Main Page</button>
+        </a>
+    </div>
 </div>
 </body>
 </html>

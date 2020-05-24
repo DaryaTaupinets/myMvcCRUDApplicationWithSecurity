@@ -2,7 +2,7 @@
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -34,7 +34,7 @@
             <form action="/admin/update" method="post">
                 </c:if>
                 <c:if test="${user == null}">
-                <form action="/admin/create" method="post">
+                <form action="/admin/create" method="post" ModelAttribute="user">
                     </c:if>
 
                     <caption>
@@ -90,19 +90,23 @@
 
                     <fieldset class="form-group">
                         <label>Role</label>
+
                         <c:if test="${user != null}">
-                            <c:if test="${user.role == 'user'}">
-                                user <input type="radio" name="role" value="user" checked>
-                                admin <input type="radio" name="role" value="admin">
-                            </c:if>
-                            <c:if test="${user.role == 'admin'}">
-                                user <input type="radio" name="role" value="user">
-                                admin <input type="radio" name="role" value="admin" checked>
-                            </c:if>
+                        <c:if test="${fn:length(user.roles) > 0}">
+                            <c:forEach var="role" items="${user.roles}" varStatus="loopCount">
+                                <c:if test="${loopCount.count eq 1}">
+                                    <c:set var="roleName" value="${role.roleName}"></c:set>
+                                </c:if>
+                            </c:forEach>
                         </c:if>
+                        </c:if>
+                        <input type="text" id="role" name="role" value="${roleName}" placeholder=""
+                               class="input-xlarge">
+
                         <c:if test="${user == null}">
-                            user <input type="radio" name="role" value="user" checked>
-                            admin <input type="radio" name="role" value="admin">
+                            <div class="controls">
+                                <input type="text" id="role" name="role" value="" placeholder="" class="input-xlarge">
+                            </div>
                         </c:if>
                     </fieldset>
                     <button type="submit" class="btn btn-primary">Save</button>
