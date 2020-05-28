@@ -3,7 +3,10 @@ package web.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import web.model.Role;
 import web.model.User;
 import web.service.RoleService;
@@ -33,7 +36,7 @@ public class UserController {
     }
 
     @GetMapping("/confidential")
-    public String confidential(Model model){
+    public String confidential(Model model) {
         return "/confidential";
     }
 
@@ -60,7 +63,7 @@ public class UserController {
     }
 
     @GetMapping("/admin/update")
-    public String editForm(@RequestParam(value="id") Integer id, Model model) {
+    public String editForm(@RequestParam(value = "id") Integer id, Model model) {
         model.addAttribute("user", userService.getUserById(id));
         return "user-form";
     }
@@ -87,7 +90,7 @@ public class UserController {
     }
 
     @ModelAttribute("user")
-    public User createUser(){
+    public User createUser() {
         return new User();
     }
 
