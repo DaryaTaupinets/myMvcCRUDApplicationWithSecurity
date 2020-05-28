@@ -1,4 +1,4 @@
-package web.security.config;
+package web.security.handlers;
 
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;

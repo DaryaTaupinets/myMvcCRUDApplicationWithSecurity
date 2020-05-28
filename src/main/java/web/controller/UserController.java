@@ -13,7 +13,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Controller
-@SessionAttributes("userAuth")
 public class UserController {
 
     @Autowired

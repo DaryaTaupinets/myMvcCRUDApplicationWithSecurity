@@ -91,23 +91,10 @@
                     <fieldset class="form-group">
                         <label>Role</label>
 
-                        <c:if test="${user != null}">
-                        <c:if test="${fn:length(user.roles) > 0}">
-                            <c:forEach var="role" items="${user.roles}" varStatus="loopCount">
-                                <c:if test="${loopCount.count eq 1}">
-                                    <c:set var="roleName" value="${role.roleName}"></c:set>
-                                </c:if>
-                            </c:forEach>
-                        </c:if>
-                        </c:if>
-                        <input type="text" id="role" name="role" value="${roleName}" placeholder=""
-                               class="input-xlarge">
-
-                        <c:if test="${user == null}">
-                            <div class="controls">
-                                <input type="text" id="role" name="role" value="" placeholder="" class="input-xlarge">
-                            </div>
-                        </c:if>
+                        <td>
+                            <input type="radio" name="role" value="user"/> user
+                            <input type="radio" name="role" value="admin"/> admin
+                        </td>
                     </fieldset>
                     <button type="submit" class="btn btn-primary">Save</button>
                 </form>
