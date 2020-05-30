@@ -48,10 +48,13 @@ public class UserController {
     @PostMapping(value = "admin/create")
     public String addUser(@ModelAttribute User user,
                           @RequestParam(value = "role") String roleName) {
-
-        Role role = roleService.getRoleByName(roleName);
         Set<Role> roles = new HashSet<>();
-        roles.add(role);
+        String[]split = roleName.split(",");
+        for (String s:split){
+            roles.add(roleService.getRoleByName(s));
+
+        }
+        user.setRoles(roles);
         userService.addUser(user);
         return "redirect:/admin";
     }
