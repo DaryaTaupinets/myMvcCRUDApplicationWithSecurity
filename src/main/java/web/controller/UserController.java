@@ -49,8 +49,8 @@ public class UserController {
     public String addUser(@ModelAttribute User user,
                           @RequestParam(value = "role") String roleName) {
         Set<Role> roles = new HashSet<>();
-        String[]split = roleName.split(",");
-        for (String s:split){
+        String[] split = roleName.split(",");
+        for (String s : split) {
             roles.add(roleService.getRoleByName(s));
 
         }
@@ -74,9 +74,11 @@ public class UserController {
     @PostMapping("/admin/update")
     public String editUser(@ModelAttribute User user,
                            @RequestParam(value = "role") String roleName) {
-        Role role = roleService.getRoleByName(roleName);
         Set<Role> roles = new HashSet<>();
-        roles.add(role);
+        String[] split = roleName.split(",");
+        for (String s : split) {
+            roles.add(roleService.getRoleByName(s));
+        }
         user.setRoles(roles);
         userService.updateUser(user);
         return "redirect:/admin";

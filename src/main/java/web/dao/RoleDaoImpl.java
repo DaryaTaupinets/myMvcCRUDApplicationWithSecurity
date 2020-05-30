@@ -6,7 +6,9 @@ import web.model.Role;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import java.util.List;
 
 @Repository
 @Transactional(readOnly = true)
@@ -26,11 +28,15 @@ public class RoleDaoImpl implements RoleDao {
 
     @Override
     public Role getRoleByName(String roleName) {
-        TypedQuery<Role> query = entityManager.createQuery(
-                "select r from Role r where r.roleName=:name", Role.class
-        );
-        query.setParameter("name", roleName);
-        return query.getResultList().stream().findAny().orElse(null);
+        Query query = entityManager.createQuery(" from Role " +
+                "where roleName = :nameParam ");
+        query.setParameter("nameParam", roleName);
+        List resultList = query.getResultList();
+        if (resultList.isEmpty()) {
+            return null;
+        }
+        Role role = (Role) resultList.get(0);
+        return role;
     }
 }
 
