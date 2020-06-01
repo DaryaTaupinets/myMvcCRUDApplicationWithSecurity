@@ -42,6 +42,7 @@ public class UserController {
 
     @GetMapping(value = "/admin/create")
     public String formAddUser(Model model) {
+        model.addAttribute("user", null);
         return "user-form";
     }
 
