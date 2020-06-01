@@ -7,10 +7,10 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import web.security.handlers.LoginSuccessHandler;
 import web.security.handlers.LogoutSuccessHandlerImpl;
-import web.security.service.UserDetailsServiceImpl;
 
 
 @EnableWebSecurity
@@ -18,7 +18,7 @@ import web.security.service.UserDetailsServiceImpl;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private UserDetailsServiceImpl userDetailsService;
+    private UserDetailsService userDetailsService;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -29,11 +29,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public LoginSuccessHandler loginSuccessHandler() {
         return new LoginSuccessHandler();
     }
-
-    //@Bean
-    //public FailureAuthenticationHandler failureAuthenticationHandler() {
-    //    return new FailureAuthenticationHandler();
-    //}
 
     @Bean
     public LogoutSuccessHandlerImpl logoutSuccessHandler() {
@@ -60,7 +55,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .loginProcessingUrl("/loginAction")
                 .successHandler(loginSuccessHandler())
                 .permitAll()
                 .and()

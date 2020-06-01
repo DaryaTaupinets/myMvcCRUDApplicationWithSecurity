@@ -9,18 +9,19 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import web.security.service.UserDetailsServiceImpl;
+import web.dao.UserDao;
+import web.dao.UserDaoImpl;
+import web.service.UserServiceImpl;
 
 @Configuration
 @EnableWebMvc
 @ComponentScan("web.controller")
 public class WebConfig implements WebMvcConfigurer {
 
-    @Bean
-    public UserDetailsService getUserDetailsService() {
-        return new UserDetailsServiceImpl();
-    }
-
+//    @Bean
+//    public UserDetailsService getUserDetailsService() {
+//        return new UserServiceImpl();
+//    }
 
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {

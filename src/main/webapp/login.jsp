@@ -36,7 +36,7 @@
 <h2>Hello! Please, enter your login and password</h2>
 
 
-<form class="auth-form" action='<spring:url value="/loginAction"/>' method="POST">
+<form class="auth-form" method="POST">
 
     <div class="d-inline-flex p-2 bd-highlight">
         <div class="container-fluid mt3">
