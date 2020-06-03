@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import web.security.handlers.LoginSuccessHandler;
 import web.security.handlers.LogoutSuccessHandlerImpl;
+import web.security.service.UserDetailsServiceImpl;
 
 
 @EnableWebSecurity
@@ -18,7 +19,7 @@ import web.security.handlers.LogoutSuccessHandlerImpl;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private UserDetailsServiceImpl userDetailsService;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
