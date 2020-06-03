@@ -7,7 +7,7 @@ import web.dao.RoleDao;
 import web.model.Role;
 
 @Service
-@Transactional (readOnly = true)
+@Transactional(readOnly = true)
 public class RoleServiceImpl implements RoleService {
 
     private final RoleDao roleDao;

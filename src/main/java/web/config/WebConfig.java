@@ -13,11 +13,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @ComponentScan("web.controller")
 public class WebConfig implements WebMvcConfigurer {
 
-//    @Bean
-//    public UserDetailsService getUserDetailsService() {
-//        return new UserServiceImpl();
-//    }
-
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
         registry.jsp().prefix("/").suffix(".jsp");
